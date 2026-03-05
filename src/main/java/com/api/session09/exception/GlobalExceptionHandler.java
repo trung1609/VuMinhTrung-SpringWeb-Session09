@@ -52,5 +52,24 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(apiResponse, HttpStatus.CONFLICT);
     }
 
+    @ExceptionHandler(FileStorageException.class)
+    public ResponseEntity<?> handleFileStorageException(FileStorageException ex){
+        ApiResponse<Object> apiResponse = ApiResponse.builder()
+                .status("FAIL")
+                .message(ex.getMessage())
+                .data(null)
+                .build();
+        return new ResponseEntity<>(apiResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<?> handleException(Exception ex){
+        ApiResponse<Object> apiResponse = ApiResponse.builder()
+                .status("FAIL")
+                .message("An unexpected error occurred")
+                .data(null)
+                .build();
+        return new ResponseEntity<>(apiResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 
 }

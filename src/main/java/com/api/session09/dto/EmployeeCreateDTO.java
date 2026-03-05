@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmployeeDTO {
+public class EmployeeCreateDTO {
     @NotBlank(message = "Full name cannot be empty")
     private String fullName;
 
@@ -30,5 +30,5 @@ public class EmployeeDTO {
     @NotNull(message = "Department ID cannot be null")
     private Long departmentId;
 
-    private String avatarUrl;
+    private MultipartFile avatarImage;
 }
